@@ -41,7 +41,7 @@ namespace TB.AspNetCore.Quarzt.Service.Quartz
         /// 添加任务计划//或者进程终止后的开启
         /// </summary>
         /// <returns></returns>
-        public static async Task<bool> StartScheduleJobAsync(ScheduleInfo scheduleInfo)
+        public static async Task<bool> StartScheduleJobAsync(ScheduleInfo scheduleInfo, bool doatonce)
         {
             try
             {
@@ -57,11 +57,11 @@ namespace TB.AspNetCore.Quarzt.Service.Quartz
                         scheduleInfo.EndRunTime = DateTime.MaxValue.AddDays(-1);
                     }
                     DateTimeOffset endRunTime = DateBuilder.NextGivenSecondDate(scheduleInfo.EndRunTime, 1);
-                    //if (string.IsNullOrWhiteSpace(scheduleInfo.CronExpress))
-                    //{
+                    if (string.IsNullOrWhiteSpace(scheduleInfo.CronExpress)|| doatonce)
+                    { 
                         DateTime dt = DateTime.Now.AddMinutes(1);
                         scheduleInfo.CronExpress = $"0 {dt.Minute} {dt.Hour} * * ?";
-                    //}
+                    }
                     _scheduler = await GetSchedulerAsync();
                     Type type = Type.GetType(scheduleInfo.JobName, true, true);
                     IJobDetail job = JobBuilder.Create(type)

@@ -150,10 +150,11 @@ namespace TB.AspNetCore.Quarzt.Controllers
             return View(scheduleInfo);
         }
 
-        public async void StartTask(int? id)
+        public async void StartTask(int? id, [FromQuery] bool? doatonce)
         {
             var scheduleInfo = JobCenter.Manager.Single<ScheduleInfo>(a => a.Id == id);
-            await JobCenter.StartScheduleJobAsync(scheduleInfo);
+            bool atonce = (doatonce == null) ? false : doatonce.Value;
+            await JobCenter.StartScheduleJobAsync(scheduleInfo, atonce);
         }
 
         public async void StopTask(int? id)
