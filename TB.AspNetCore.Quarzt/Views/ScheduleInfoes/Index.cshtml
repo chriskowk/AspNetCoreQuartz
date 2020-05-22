@@ -1,0 +1,119 @@
+﻿@model IEnumerable<TB.AspNetCore.Data.Entity.ScheduleInfo>
+
+@{
+    ViewData["Title"] = "Job列表";
+}
+<p>
+
+</p>
+<p>
+    <a asp-action="Create">添加任务</a>
+</p>
+<table class="table" width="100%" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+    <thead>
+        <tr>
+            <th width="80">
+                @Html.DisplayNameFor(model => model.JobGroup)
+            </th>
+            <th width="300">
+                @Html.DisplayNameFor(model => model.JobName)
+            </th>
+            <th width="100">
+                @Html.DisplayNameFor(model => model.CronExpress)
+            </th>
+            <th width="100">
+                @Html.DisplayNameFor(model => model.StartRunTime)
+            </th>
+            <th width="100">
+                @Html.DisplayNameFor(model => model.EndRunTime)
+            </th>
+            @*<th width="100">
+                @Html.DisplayNameFor(model => model.NextRunTime)
+            </th>
+            <th width="100">
+                @Html.DisplayNameFor(model => model.Token)
+            </th>
+            <th width="100">
+                @Html.DisplayNameFor(model => model.AppId)
+            </th>
+            <th width="100">
+                @Html.DisplayNameFor(model => model.ServiceCode)
+            </th>
+            <th width="100">
+                @Html.DisplayNameFor(model => model.InterfaceCode)
+            </th>
+            <th width="50">
+                @Html.DisplayNameFor(model => model.DataStatus)
+            </th>*@
+            <th width="150">
+                @Html.DisplayNameFor(model => model.TaskDescription)
+            </th>
+            <th width="50">
+                @Html.DisplayNameFor(model => model.RunStatus)
+            </th>
+            <th width="60">
+                @Html.DisplayNameFor(model => model.Creator)
+            </th>
+            <th width="100">
+                @Html.DisplayNameFor(model => model.CreateTime)
+            </th>
+            <th width="150">执行操作</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobGroup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CronExpress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartRunTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndRunTime)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.NextRunTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Token)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InterfaceCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataStatus)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RunStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Creator)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateTime)
+            </td>
+            <td>
+                <a asp-action="StartTask" asp-route-id="@item.Id">启动任务</a> |
+                <a asp-action="StopTask" asp-route-id="@item.Id">暂停任务</a>|
+                <a asp-action="Delete" asp-route-id="@item.Id">删除任务</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
