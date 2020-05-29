@@ -75,7 +75,7 @@ namespace TB.AspNetCore.Quarzt.Service.Quartz
                                                 .Build();
                     ((CronTriggerImpl)trigger).MisfireInstruction = MisfireInstruction.CronTrigger.DoNothing;
                     //将信息写入
-                    scheduleInfo.RunStatus = (int)JobStatus.待运行;
+                    scheduleInfo.RunStatus = (int)JobStatus.Waiting;
                     Manager.SaveSchedule(scheduleInfo);
                     IList<ICronTrigger> triggers = new List<ICronTrigger> { trigger };
                     await _scheduler.ScheduleJob(job, new ReadOnlyCollection<ICronTrigger>(triggers), true);
@@ -107,7 +107,7 @@ namespace TB.AspNetCore.Quarzt.Service.Quartz
                 //使任务暂停
                 await _scheduler.PauseJob(new JobKey(scheduleInfo.JobName, scheduleInfo.JobGroup));
                 //更新数据库
-                scheduleInfo.RunStatus = (int)JobStatus.已停止;
+                scheduleInfo.RunStatus = (int)JobStatus.Pause;
                 Manager.UpdateScheduleStatus(scheduleInfo);
                 var status = new StatusViewModel()
                 {
@@ -135,7 +135,7 @@ namespace TB.AspNetCore.Quarzt.Service.Quartz
         {
             try
             {
-                scheduleInfo.RunStatus = (int)JobStatus.待运行;
+                scheduleInfo.RunStatus = (int)JobStatus.Waiting;
                 //更新model
                 Manager.UpdateScheduleStatus(scheduleInfo);
                 _scheduler = await GetSchedulerAsync();

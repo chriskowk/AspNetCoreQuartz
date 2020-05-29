@@ -46,7 +46,6 @@ namespace TB.AspNetCore.Quarzt.Controllers
         // GET: ScheduleInfoes
         public async Task<IActionResult> Index()
         {
-            //await RestartScheduler();
             if (_scheduler == null)
                 _scheduler = await JobCenter.GetSchedulerAsync();
 
@@ -54,10 +53,18 @@ namespace TB.AspNetCore.Quarzt.Controllers
                 await _scheduler.Start();
 
             if (_consumer == null)
-                ReceiveMessage();
+                BuildConsumers();
 
-            var info = JobCenter.Manager.GetAllScheduleList().ToListAsync();
-            return View(await info);
+            var infos = JobCenter.Manager.GetAllScheduleList().ToListAsync();
+            foreach (var item in await infos)
+            {
+                if (item.RunStatus == (int)JobStatus.Enabled || item.RunStatus == (int)JobStatus.Waiting)
+                {
+                    StartTask(item.Id, false);
+                }
+
+            }
+            return View(await infos);
         }
 
         private async Task RestartScheduler()
@@ -76,7 +83,7 @@ namespace TB.AspNetCore.Quarzt.Controllers
         private static readonly IConnection _connection = ConnectionFactory.CreateConnection();
         private static readonly IModel _channel = _connection.CreateModel();
         private static EventingBasicConsumer _consumer = null;
-        private static void ReceiveMessage()
+        private static void BuildConsumers()
         {
             _channel.QueueDeclare(queue: "CompileMessage", durable: true, exclusive: false, autoDelete: false, arguments: null);
             _channel.ExchangeDeclare(exchange: "CompileExchange", type: ExchangeType.Direct, durable: true, autoDelete: false, arguments: null);

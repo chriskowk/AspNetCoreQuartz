@@ -160,11 +160,7 @@ namespace TB.AspNetCore.Quarzt.Service
         #region Save Changes
         public void Save()
         {
-            //todo 需要验证是否需要释放
-            using (this.DataContext)
-            {
-                this.DataContext.SaveChanges();
-            }
+            this.DataContext.SaveChanges();
         }
 
         /// <summary>

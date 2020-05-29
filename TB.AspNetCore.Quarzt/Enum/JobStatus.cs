@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace TB.AspNetCore.Quarzt.Enum
 {
-    public enum JobStatus
-    {
-        [Description("已启用")]
-        已启用,
-        [Description("运行中")]
-        待运行,
-        [Description("执行中")]
-        执行中,
-        [Description("执行完成")]
-        执行完成,
-        [Description("执行任务计划中")]
-        执行任务计划中,
-        [Description("已停止")]
-        已停止,
-    }
+    //public enum JobStatus
+    //{
+    //    [Description("未启用")]
+    //    Disabled = 0,
+    //    [Description("已启用")]
+    //    Enabled = 1,
+    //    [Description("调度中")]
+    //    Waiting = 2,
+    //    [Description("执行中")]
+    //    Running = 3,
+    //    [Description("执行完成")]
+    //    Completed = 4,
+    //    [Description("已停止")]
+    //    Pause = 5,
+    //}
 }
