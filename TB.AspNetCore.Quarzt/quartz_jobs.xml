@@ -29,6 +29,8 @@
         <!--秒 分 小时 月内日期 月 周内日期 年（可选字段）-->
         <!--周一到周五每天的8点到20点，每一分钟触发一次-->
         <!--<cron-expression>0 0/1 8-20 ? * MON-FRI</cron-expression>-->
+        <!--周一到周五每天的16点45分触发-->
+        <!--<cron-expression>0 45 16 ? * MON-FRI</cron-expression>-->
         <!--每天16点45分触发-->
         <!--<cron-expression>0 45 16 ? * *</cron-expression>-->
         <!-- 每隔5秒执行一次：*/5 * * * * ?

@@ -21,10 +21,10 @@
                 <Image Height="17" Margin="0,0,0,0" Stretch="Fill" Width="18" Source="images/close.bmp"/>
             </Button>
         </Grid>
-        <StackPanel Grid.Row="1" Margin="20,0,20,0" >
+        <StackPanel Grid.Row="1" Margin="15,5,15,0" >
             <TextBlock HorizontalAlignment="Left" Name="_txtMessage" TextWrapping="Wrap" >TextBlock</TextBlock>
         </StackPanel>
-        <StackPanel Grid.Row="2" VerticalAlignment="Center" Margin="20,0,20,0" >
+        <StackPanel Grid.Row="2" VerticalAlignment="Center" Margin="15,0,15,0" >
             <Button Height="35" HorizontalAlignment="Right" Name="_cmdOK" VerticalAlignment="Top" Width="100" Content="确定" Click="_cmdOK_Click"></Button>
         </StackPanel>
     </Grid>
