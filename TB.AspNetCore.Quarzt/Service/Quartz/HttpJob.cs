@@ -14,7 +14,7 @@ namespace TB.AspNetCore.Quarzt.Service.Quartz
         {
             return Task.Run(() =>
             {
-                using (StreamWriter sw = new StreamWriter(@"E:\httpjob.log", true, Encoding.UTF8))
+                using (StreamWriter sw = new StreamWriter(@"E:\http-job.log", true, Encoding.UTF8))
                 {
                     sw.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}");
                 }

@@ -71,7 +71,7 @@ namespace TB.AspNetCore.Quarzt.Controllers
         {
             if (_scheduler != null && _scheduler.IsStarted)
             {
-                await _scheduler.Shutdown();
+                await _scheduler.Standby();
                 _scheduler = null;
             }
             XMLSchedulingDataProcessor processor = new XMLSchedulingDataProcessor(new SimpleTypeLoadHelper());
@@ -160,7 +160,7 @@ namespace TB.AspNetCore.Quarzt.Controllers
         public async void StartTask(int? id, [FromQuery] bool? doatonce)
         {
             var scheduleInfo = JobCenter.Manager.Single<ScheduleInfo>(a => a.Id == id);
-            bool atonce = (doatonce == null) ? false : doatonce.Value;
+            bool atonce = doatonce != null && doatonce.Value;
             await JobCenter.StartScheduleJobAsync(scheduleInfo, atonce);
         }
 
