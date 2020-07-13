@@ -5,16 +5,20 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <RootNamespace>Jetsun.AspNetCore</RootNamespace>
-    <ApplicationIcon>Emailico.ico</ApplicationIcon>
+    <ApplicationIcon>balloon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="balloon.ico" />
+    <None Remove="images\balloon.ico" />
     <None Remove="images\close.bmp" />
     <None Remove="images\Emailico.ico" />
     <None Remove="images\min.bmp" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="balloon.ico" />
+    <Resource Include="images\balloon.ico" />
     <Resource Include="images\close.bmp" />
     <Resource Include="images\Emailico.ico" />
     <Resource Include="images\min.bmp" />
