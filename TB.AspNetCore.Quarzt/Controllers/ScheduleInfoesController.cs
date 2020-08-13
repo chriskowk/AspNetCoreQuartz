@@ -17,7 +17,6 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using TB.AspNetCore.Data.Entity;
 using TB.AspNetCore.Quarzt.CompileProfile;
-using TB.AspNetCore.Quarzt.Enum;
 using TB.AspNetCore.Quarzt.Service.Quartz;
 
 namespace TB.AspNetCore.Quarzt.Controllers

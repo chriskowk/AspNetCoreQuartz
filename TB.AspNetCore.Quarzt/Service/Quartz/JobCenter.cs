@@ -9,7 +9,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using TB.AspNetCore.Data.Entity;
-using TB.AspNetCore.Quarzt.Enum;
 using TB.AspNetCore.Quarzt.Models;
 
 namespace TB.AspNetCore.Quarzt.Service.Quartz
