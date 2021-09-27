@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using RabbitMQ.Client;
+using TB.AspNetCore.Data.Entity;
 
 namespace TB.AspNetCore.Quarzt
 {

@@ -29,12 +29,14 @@ namespace TB.AspNetCore.Quarzt
 
         public IConfiguration Configuration { get; }
 
+        private static string _testDbConnectionString = "Data Source=GUOSHAOYUE-5040;Initial Catalog=Test;Persist Security Info=True;User ID=sa;Password=jetsun";
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             string path = Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), "scheduler.db");
             services.AddDbContext<SchedulerDbContext>(options => options.UseSqlite($"Data Source={path}"));
             //services.AddDbContext<SchedulerDbContext>(options => options.UseMySql(@"server=localhost;database=test_db;uid=root;pwd=jetsun;"));
+            services.AddDbContext<TestDBContext>(options => options.UseSqlServer(_testDbConnectionString).AddInterceptors(new QueryWithNoLockDbCommandInterceptor()));
 
             services.Configure<CookiePolicyOptions>(options =>
             {
