@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Quartz;
 using Quartz.Impl;
 using TB.AspNetCore.Data.Entity;
@@ -36,7 +37,14 @@ namespace TB.AspNetCore.Quarzt
             string path = Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), "scheduler.db");
             services.AddDbContext<SchedulerDbContext>(options => options.UseSqlite($"Data Source={path}"));
             //services.AddDbContext<SchedulerDbContext>(options => options.UseMySql(@"server=localhost;database=test_db;uid=root;pwd=jetsun;"));
-            services.AddDbContext<TestDBContext>(options => options.UseSqlServer(_testDbConnectionString).AddInterceptors(new QueryWithNoLockDbCommandInterceptor()));
+            
+            services.AddDbContext<TestDBContext>(options =>
+            {
+                options
+                    .UseLoggerFactory(LoggerFactory.Create(builder => { builder.AddConsole(); }))
+                    .UseSqlServer(_testDbConnectionString)
+                    .AddInterceptors(new QueryWithNoLockDbCommandInterceptor());
+            });
 
             services.Configure<CookiePolicyOptions>(options =>
             {
