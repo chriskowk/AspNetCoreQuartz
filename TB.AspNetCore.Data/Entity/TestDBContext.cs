@@ -40,7 +40,7 @@ namespace TB.AspNetCore.Data.Entity
         public int? Age { get; set; }
 
         [StringLength(100)]
-        public string? Location { get; set; }
+        public string Location { get; set; }
 
         public DateTime? LastAccessDate { get; set; }
 
@@ -49,7 +49,7 @@ namespace TB.AspNetCore.Data.Entity
         public int? Views { get; set; }
 
         [StringLength(200)]
-        public string? WebsiteUrl { get; set; }
+        public string WebsiteUrl { get; set; }
     }
 
     public class QueryWithNoLockDbCommandInterceptor : DbCommandInterceptor
