@@ -28,7 +28,7 @@ namespace TB.AspNetCore.Quarzt.Controllers
         private readonly ISchedulerFactory _schedulerFactory;
         private static IScheduler _scheduler;
         private BASE_PATHS _BASE_PATHS;
-        public ScheduleInfoesController(SchedulerDbContext context, ILogger<HomeController> logger, ISchedulerFactory schedulerFactory, IOptions<BASE_PATHS> settings)
+        public ScheduleInfoesController(SchedulerDbContext context, ILogger<HomeController> logger, ISchedulerFactory schedulerFactory, IOptions<BASE_PATHS> settings, TestDBContext testDBContext)
         {
             _context = context;
             JobCenter.Manager = new ScheduleManager(_context);
@@ -40,6 +40,28 @@ namespace TB.AspNetCore.Quarzt.Controllers
             TaskJob.BASE_PATH = _BASE_PATHS.MedicalHealth;
             TaskJobS1.BASE_PATH = _BASE_PATHS.MedicalHealthS1;
             TaskJobSY.BASE_PATH = _BASE_PATHS.MedicalHealthSY;
+
+            var users = testDBContext.Users.Where(a => a.Id < 10).ToList();
+            foreach (var item in users)
+            {
+                Console.Write(item.Id.ToString() + ", " + item.DisplayName);
+                Console.WriteLine();
+            }
+            User addone = new User()
+            {
+                DisplayName = "Admin",
+                CreationDate = DateTime.Now,
+                DownVotes = 100,
+                UpVotes = 1000
+            };
+            testDBContext.Users.Add(addone);
+            testDBContext.SaveChanges();//自增主键在插入成功后，会自动赋值过去
+            var delone = testDBContext.Users.FirstOrDefault(a => a.Id == addone.Id);
+            if (delone != null)
+            {
+                testDBContext.Users.Remove(delone);
+                testDBContext.SaveChanges();//本身就是一个事务
+            }
         }
 
         // GET: ScheduleInfoes
