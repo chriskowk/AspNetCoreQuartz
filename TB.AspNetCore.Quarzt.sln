@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobLibrary", "JobLibrary\Jo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageBox", "MessageBox\MessageBox.csproj", "{41836F7A-8516-4E8E-86A1-4A7122AC49F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleCancellableTask", "ConsoleCancellableTask\ConsoleCancellableTask.csproj", "{514C6258-FCCE-4936-81CC-12073C492E13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleCancellableTask", "ConsoleCancellableTask\ConsoleCancellableTask.csproj", "{514C6258-FCCE-4936-81CC-12073C492E13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncBreakfast", "AsyncBreakfast\AsyncBreakfast.csproj", "{271373DD-5270-481C-B0C0-EE66564F185E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{514C6258-FCCE-4936-81CC-12073C492E13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{514C6258-FCCE-4936-81CC-12073C492E13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{514C6258-FCCE-4936-81CC-12073C492E13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{271373DD-5270-481C-B0C0-EE66564F185E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{271373DD-5270-481C-B0C0-EE66564F185E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{271373DD-5270-481C-B0C0-EE66564F185E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{271373DD-5270-481C-B0C0-EE66564F185E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
