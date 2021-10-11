@@ -9,13 +9,15 @@ namespace ConsoleCancellableTask
     {
         static void Main(string[] args)
         {
-            DoTest();
+            //DoTestAsync();
+            //WhenAnyOrWaitAnyHelper.DoTestAsync(WhenAnyOrWaitAnyEnum.WHEN_ANY); //WHEN_ANY：异步执行（不等待先输出Press any key to exit ...）
+            WhenAnyOrWaitAnyHelper.DoTestAsync(WhenAnyOrWaitAnyEnum.WAIT_ANY); //WAIT_ANY：同步执行（最后输出Press any key to exit ...）
 
             Console.WriteLine("Press any key to exit ...");
             Console.ReadKey();
         }
 
-        static async void DoTest()
+        static async void DoTestAsync()
         {
             var tasks = new List<Task<int>>();
             CancellationTokenSource source = new CancellationTokenSource();
