@@ -29,10 +29,16 @@ namespace ConsoleCancellableTask
             }
             _cts.Cancel();
 
+            if (completedTask == null && index != -1)
+                completedTask = tasks[index];
+
             if (completedTask != null)
+            {
                 Console.WriteLine($"index={index}; completedTask.Id={completedTask.Id}; ");
-            else
-                Console.WriteLine($"index={index}; completedTask.Id={tasks[index].Id}; ");
+                if (completedTask == cb)
+                    Console.WriteLine($"completedTask.Result={cb.Result}; ");
+            }
+
             Console.WriteLine($"TcpClientConnectAsync.Id={ca.Id} | TcpClientConnectAsync.Status={ca.Status}; AuditAsync.Id={cb.Id} | AuditAsync.Status={cb.Status}");
             if (ca.IsFaulted || !ca.IsCompleted)
                 Console.WriteLine("Connection failed due to timeout or exception");
@@ -58,7 +64,7 @@ namespace ConsoleCancellableTask
             await Task.Run(() =>
             {
                 string ret = "AuditAsync start:";
-                Thread.Sleep(30000); //30秒
+                Thread.Sleep(10000); //30秒
                 if (cancellationToken.IsCancellationRequested) return ret;
 
                 Console.WriteLine($"{ret}-{para}");
