@@ -4,7 +4,7 @@
     Title="消息提示框" WindowStyle="ToolWindow" HorizontalAlignment="Center" FontSize="16" WindowStartupLocation="CenterScreen" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Height="200" Width="520" Topmost="True" ShowInTaskbar="False">
     <Window.Resources>
         <Style x:Key="Font">
-            <Setter Property="Control.FontFamily" Value="Arial" />
+            <Setter Property="Control.FontFamily" Value="Microsoft YaHei" />
         </Style>
     </Window.Resources>
     <Grid Opacity ="1" Visibility="Visible" Style="{StaticResource Font}">
